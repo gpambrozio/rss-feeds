@@ -13,7 +13,7 @@
       <link>https://anthropic.com/engineering/feed_anthropic_engineering.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Thu, 11 Sep 2025 18:04:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 11 Sep 2025 19:04:03 +0000</lastBuildDate>
     <item>
       <title>Introducing Contextual Retrieval</title>
       <link>https://www.anthropic.com/engineering/contextual-retrieval</link>
@@ -65,10 +65,18 @@
     <item>
       <title>Desktop Extensions: One-click MCP server installation for Claude Desktop</title>
       <link>https://www.anthropic.com/engineering/desktop-extensions</link>
-      <description>Desktop Extensions make installing MCP servers as easy as clicking a button. We share the technical architecture and tips for creating good extensions.</description>
+      <description>Desktop Extensions: One-click MCP server installation for Claude Desktop</description>
       <guid isPermaLink="false">https://www.anthropic.com/engineering/desktop-extensions</guid>
       <category>Engineering</category>
       <pubDate>Sun, 29 Jun 2025 18:38:51 +0000</pubDate>
+    </item>
+    <item>
+      <title>Writing effective tools for agents — with agents</title>
+      <link>https://www.anthropic.com/engineering/writing-tools-for-agents</link>
+      <description>Agents are only as effective as the tools we give them. We share how to write high-quality tools and evaluations, and how you can boost performance by using Claude to optimize its tools for itself.</description>
+      <guid isPermaLink="false">https://www.anthropic.com/engineering/writing-tools-for-agents</guid>
+      <category>Engineering</category>
+      <pubDate>Thu, 11 Sep 2025 19:04:03 +0000</pubDate>
     </item>
   </channel>
 </rss>
