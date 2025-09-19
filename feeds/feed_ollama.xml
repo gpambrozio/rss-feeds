@@ -13,7 +13,7 @@
       <link>https://ollama.com/blog/feed_ollama.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Fri, 19 Sep 2025 21:04:43 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 19 Sep 2025 22:05:19 +0000</lastBuildDate>
     <item>
       <title>Run Llama 2 uncensored locally</title>
       <link>https://ollama.com/blog/run-llama2-uncensored-locally</link>
@@ -230,6 +230,13 @@
       <description>Ollama partners with OpenAI to bring gpt-oss to Ollama and its community.</description>
       <guid isPermaLink="false">https://ollama.com/blog/gpt-oss</guid>
       <pubDate>Tue, 05 Aug 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Cloud models</title>
+      <link>https://ollama.com/blog/cloud-models</link>
+      <description>Cloud models are now in preview, letting you run larger models with fast, datacenter-grade hardware. You can keep using your local tools while running larger models that wouldn’t fit on a personal computer.</description>
+      <guid isPermaLink="false">https://ollama.com/blog/cloud-models</guid>
+      <pubDate>Fri, 19 Sep 2025 00:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>
