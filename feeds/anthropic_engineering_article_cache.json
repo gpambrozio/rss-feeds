@@ -38,5 +38,13 @@
   "https://www.anthropic.com/engineering/a-postmortem-of-three-recent-issues": {
     "title": "A postmortem of three recent issues",
     "date": "2025-09-17T21:04:27.349078+00:00"
+  },
+  "https://www.anthropic.com/engineering/building-agents-with-the-claude-agent-sdk": {
+    "title": "Building agents with the Claude Agent SDK",
+    "date": "2025-09-29T17:04:11.840696+00:00"
+  },
+  "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents": {
+    "title": "Effective context engineering for AI agents",
+    "date": "2025-09-29T17:04:11.840696+00:00"
   }
 }

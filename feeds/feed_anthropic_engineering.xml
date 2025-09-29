@@ -13,7 +13,7 @@
       <link>https://anthropic.com/engineering/feed_anthropic_engineering.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Mon, 29 Sep 2025 16:04:02 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 29 Sep 2025 17:04:11 +0000</lastBuildDate>
     <item>
       <title>Introducing Contextual Retrieval</title>
       <link>https://www.anthropic.com/engineering/contextual-retrieval</link>
@@ -81,10 +81,26 @@
     <item>
       <title>A postmortem of three recent issues</title>
       <link>https://www.anthropic.com/engineering/a-postmortem-of-three-recent-issues</link>
-      <description>This is a technical report on three bugs that intermittently degraded responses from Claude. Below we explain what happened, why it took time to fix, and what we're changing.</description>
+      <description>A postmortem of three recent issues</description>
       <guid isPermaLink="false">https://www.anthropic.com/engineering/a-postmortem-of-three-recent-issues</guid>
       <category>Engineering</category>
       <pubDate>Wed, 17 Sep 2025 21:04:27 +0000</pubDate>
+    </item>
+    <item>
+      <title>Effective context engineering for AI agents</title>
+      <link>https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents</link>
+      <description>Effective context engineering for AI agents</description>
+      <guid isPermaLink="false">https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents</guid>
+      <category>Engineering</category>
+      <pubDate>Mon, 29 Sep 2025 17:04:11 +0000</pubDate>
+    </item>
+    <item>
+      <title>Building agents with the Claude Agent SDK</title>
+      <link>https://www.anthropic.com/engineering/building-agents-with-the-claude-agent-sdk</link>
+      <description>The Claude Agent SDK is a collection of tools that helps developers build powerful agents on top of Claude Code. In this article, we walk through how to get started  and share our best practices.</description>
+      <guid isPermaLink="false">https://www.anthropic.com/engineering/building-agents-with-the-claude-agent-sdk</guid>
+      <category>Engineering</category>
+      <pubDate>Mon, 29 Sep 2025 17:04:11 +0000</pubDate>
     </item>
   </channel>
 </rss>
