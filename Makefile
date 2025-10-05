@@ -5,7 +5,9 @@ SHELL := /bin/bash
 .PHONY: help
 .DEFAULT_GOAL := help
 help:  ## Prints all the targets in all the Makefiles
-	@grep -h -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+	@echo ""
+	@grep -h -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n\n", $$1, $$2}'
+	@echo ""
 
 .PHONY: list
 list:  ## List all make targets
@@ -105,3 +107,23 @@ test_feed_workflow:  ## Run the .github/workflows/test_feed.yml workflow locally
 test_feed_generate: check-env  ## Run the test_feed.py script
 	@echo 'Running test_feed.py...'
 	@python feed_generators/test_feed.py
+
+############################
+### CI Workflow Runs     ###
+############################
+
+.PHONY: act_run_feeds_workflow
+act_run_feeds_workflow:  ## Run the .github/workflows/run_feeds.yml workflow locally using act
+	@if command -v act >/dev/null 2>&1; then \
+	  act --container-architecture linux/amd64 -W .github/workflows/run_feeds.yml; \
+	else \
+	  echo 'The `act` tool is not installed. To run GitHub Actions locally, install act: https://github.com/nektos/act'; \
+	fi
+
+.PHONY: gh_run_feeds_workflow
+gh_run_feeds_workflow: ## Trigger the .github/workflows/run_feeds.yml workflow on GitHub using gh
+	@if command -v gh >/dev/null 2>&1; then \
+	  gh workflow run run_feeds.yml; \
+	else \
+	  echo 'The `gh` CLI is not installed. Install: https://cli.github.com/'; \
+	fi
