@@ -38,104 +38,168 @@ def fetch_news_content(url="https://www.anthropic.com/news"):
         raise
 
 
+def extract_title(card):
+    """Extract title using multiple fallback selectors."""
+    selectors = [
+        "h3.PostCard_post-heading__Ob1pu",
+        "h3.Card_headline__reaoT",
+        "h3[class*='headline']",
+        "h3[class*='heading']",
+        "h2[class*='headline']",
+        "h2[class*='heading']",
+        "h3",
+        "h2",
+    ]
+    for selector in selectors:
+        elem = card.select_one(selector)
+        if elem and elem.text.strip():
+            return elem.text.strip()
+    return None
+
+
+def extract_date(card):
+    """Extract date using multiple fallback selectors and formats."""
+    selectors = [
+        "div.PostList_post-date__djrOA",
+        "p.detail-m.agate",
+        "p[class*='date']",
+        "div[class*='date']",
+        "time",
+    ]
+
+    date_formats = [
+        "%b %d, %Y",
+        "%B %d, %Y",
+        "%b %d %Y",
+        "%B %d %Y",
+        "%Y-%m-%d",
+        "%m/%d/%Y",
+    ]
+
+    for selector in selectors:
+        elem = card.select_one(selector)
+        if elem:
+            date_text = elem.text.strip()
+            for date_format in date_formats:
+                try:
+                    date = datetime.strptime(date_text, date_format)
+                    return date.replace(tzinfo=pytz.UTC)
+                except ValueError:
+                    continue
+
+    return None
+
+
+def extract_category(card, date_elem_text=None):
+    """Extract category using multiple fallback selectors."""
+    selectors = [
+        "span.text-label",
+        "p.detail-m",
+        "span[class*='category']",
+        "div[class*='category']",
+    ]
+
+    for selector in selectors:
+        elem = card.select_one(selector)
+        if elem:
+            text = elem.text.strip()
+            # Skip if this is the date element
+            if date_elem_text and text == date_elem_text:
+                continue
+            # Skip if it looks like a date
+            if any(month in text for month in ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                                                 "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]):
+                continue
+            return text
+
+    return "News"
+
+
+def validate_article(article):
+    """Validate that article has all required fields with reasonable values."""
+    if not article.get("title") or len(article["title"]) < 5:
+        logger.warning(f"Invalid title for article: {article.get('link', 'unknown')}")
+        return False
+
+    if not article.get("link") or not article["link"].startswith("http"):
+        logger.warning(f"Invalid link for article: {article.get('title', 'unknown')}")
+        return False
+
+    if not article.get("date"):
+        logger.warning(f"Missing date for article: {article.get('title', 'unknown')}")
+        return False
+
+    return True
+
+
 def parse_news_html(html_content):
     """Parse the news HTML content and extract article information."""
     try:
         soup = BeautifulSoup(html_content, "html.parser")
         articles = []
         seen_links = set()
+        unknown_structures = 0
 
-        # Find all PostCard article cards
-        post_cards = soup.select("a.PostCard_post-card__z_Sqq")
+        # Find all links that point to news articles
+        # Use flexible selectors to catch current and future card types
+        all_news_links = soup.select('a[href*="/news/"]')
 
-        for card in post_cards:
-            # Extract title
-            title_elem = card.select_one("h3.PostCard_post-heading__Ob1pu")
-            if not title_elem:
-                continue
-            title = title_elem.text.strip()
+        logger.info(f"Found {len(all_news_links)} potential news article links")
 
-            # Extract link
-            link = "https://www.anthropic.com" + card["href"] if card["href"].startswith("/") else card["href"]
-
-            # Skip duplicates
-            if link in seen_links:
-                continue
-            seen_links.add(link)
-
-            # Extract date
-            date_elem = card.select_one("div.PostList_post-date__djrOA")
-            if date_elem:
-                try:
-                    date = datetime.strptime(date_elem.text.strip(), "%b %d, %Y")
-                    date = date.replace(tzinfo=pytz.UTC)
-                except ValueError:
-                    logger.warning(f"Could not parse date for article: {title}")
-                    date = datetime.now(pytz.UTC)
-            else:
-                date = datetime.now(pytz.UTC)
-
-            # Extract category
-            category_elem = card.select_one("span.text-label")
-            category = category_elem.text.strip() if category_elem else "News"
-
-            # Extract description (if present in the HTML)
-            # Note: Description might not be directly available, using title as fallback
-            description = title
-
-            articles.append(
-                {"title": title, "link": link, "date": date, "category": category, "description": description}
-            )
-
-        # Also find Card_linkRoot cards (different layout style)
-        card_links = soup.select("a.Card_linkRoot__alQfM")
-
-        for card in card_links:
-            # Extract title
-            title_elem = card.select_one("h3.Card_headline__reaoT")
-            if not title_elem:
-                continue
-            title = title_elem.text.strip()
-
-            # Extract link
+        for card in all_news_links:
             href = card.get("href", "")
+            if not href:
+                continue
+
+            # Build full URL
             link = "https://www.anthropic.com" + href if href.startswith("/") else href
 
             # Skip duplicates
             if link in seen_links:
                 continue
+
+            # Skip the main news page link
+            if link.endswith("/news") or link.endswith("/news/"):
+                continue
+
             seen_links.add(link)
 
-            # Extract date from Card layout
-            date_elem = card.select_one("p.detail-m.agate")
-            if date_elem:
-                try:
-                    date_text = date_elem.text.strip()
-                    date = datetime.strptime(date_text, "%b %d, %Y")
-                    date = date.replace(tzinfo=pytz.UTC)
-                except ValueError:
-                    try:
-                        # Try alternative format without comma
-                        date = datetime.strptime(date_text, "%b %d %Y")
-                        date = date.replace(tzinfo=pytz.UTC)
-                    except ValueError:
-                        logger.warning(f"Could not parse date '{date_text}' for article: {title}")
-                        date = datetime.now(pytz.UTC)
-            else:
+            # Extract title using fallback chain
+            title = extract_title(card)
+            if not title:
+                logger.debug(f"Could not extract title for link: {link}")
+                logger.debug(f"Card HTML preview: {str(card)[:200]}")
+                unknown_structures += 1
+                continue
+
+            # Extract date using fallback chain
+            date = extract_date(card)
+            if not date:
+                logger.warning(f"Could not extract date for article: {title}")
                 date = datetime.now(pytz.UTC)
 
             # Extract category
-            category_elem = card.select_one("p.detail-m")
-            category = category_elem.text.strip() if category_elem and category_elem != date_elem else "News"
+            category = extract_category(card)
 
-            # Extract description (if present in the HTML)
-            description = title
+            # Create article object
+            article = {
+                "title": title,
+                "link": link,
+                "date": date,
+                "category": category,
+                "description": title,  # Using title as description fallback
+            }
 
-            articles.append(
-                {"title": title, "link": link, "date": date, "category": category, "description": description}
-            )
+            # Validate article before adding
+            if validate_article(article):
+                articles.append(article)
+            else:
+                unknown_structures += 1
 
-        logger.info(f"Successfully parsed {len(articles)} articles")
+        if unknown_structures > 0:
+            logger.warning(f"Encountered {unknown_structures} links with unknown or invalid structures")
+
+        logger.info(f"Successfully parsed {len(articles)} valid articles")
         return articles
 
     except Exception as e:

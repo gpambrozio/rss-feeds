@@ -76,125 +76,151 @@ def fetch_engineering_content(url="https://www.anthropic.com/engineering"):
         raise
 
 
+def extract_title(card):
+    """Extract title using multiple fallback selectors."""
+    selectors = ["h2", "h3", "h1", "h4[class*='headline']", "h3[class*='title']", "h2[class*='title']"]
+    for selector in selectors:
+        elem = card.select_one(selector)
+        if elem and elem.text.strip():
+            return elem.text.strip()
+    return None
+
+
+def extract_date(card, article_cache, link):
+    """Extract date using multiple fallback selectors and cache."""
+    # Check cache first
+    if link in article_cache:
+        return article_cache[link]["date"], False
+
+    selectors = [
+        "div.ArticleList_date__2VTRg",
+        "div[class*='date']",
+        "p[class*='date']",
+        "time",
+        ".detail-m.agate",
+    ]
+
+    date_formats = [
+        "%b %d, %Y",
+        "%B %d, %Y",
+        "%b %d %Y",
+        "%B %d %Y",
+        "%Y-%m-%d",
+        "%m/%d/%Y",
+    ]
+
+    for selector in selectors:
+        elem = card.select_one(selector)
+        if elem:
+            date_text = elem.text.strip()
+            for date_format in date_formats:
+                try:
+                    date = datetime.strptime(date_text, date_format)
+                    return date.replace(hour=0, minute=0, second=0, tzinfo=pytz.UTC), True
+                except ValueError:
+                    continue
+
+    # Use current time as "first seen" date if not found
+    return datetime.now(pytz.UTC), True
+
+
+def extract_link(card):
+    """Extract link using multiple fallback selectors."""
+    selectors = [
+        "a.ArticleList_cardLink__VWIzl",
+        "a[href*='/engineering/']",
+        "a[class*='cardLink']",
+        "a[class*='link']",
+    ]
+
+    for selector in selectors:
+        elem = card.select_one(selector)
+        if elem and elem.get("href"):
+            href = elem["href"]
+            return "https://www.anthropic.com" + href if href.startswith("/") else href
+
+    return None
+
+
+def validate_article(article):
+    """Validate article has required fields."""
+    if not article.get("title") or len(article["title"]) < 5:
+        return False
+    if not article.get("link") or not article["link"].startswith("http"):
+        return False
+    if not article.get("date"):
+        return False
+    return True
+
+
 def parse_engineering_html(html_content):
     """Parse the engineering HTML content and extract article information."""
     try:
         soup = BeautifulSoup(html_content, "html.parser")
         articles = []
+        seen_links = set()
 
         # Load existing article cache
         article_cache = load_article_cache()
-        current_time = datetime.now(pytz.UTC)
         cache_updated = False
 
-        # Find the featured article first
-        featured_article = soup.select_one("article.ArticleList_featured__2WCTd")
-        if featured_article:
-            # Extract title from featured article
-            title_elem = featured_article.select_one("h2")
-            if title_elem:
-                title = title_elem.text.strip()
+        # Find all engineering article links using flexible selector
+        all_eng_links = soup.select('a[href*="/engineering/"]')
+        logger.info(f"Found {len(all_eng_links)} potential engineering article links")
 
-                # Extract link
-                link_elem = featured_article.select_one("a.ArticleList_cardLink__VWIzl")
-                if link_elem and link_elem.get("href"):
-                    link = "https://www.anthropic.com" + link_elem["href"]
+        # Also look for article elements
+        article_elements = soup.select("article")
 
-                    # Extract description
-                    desc_elem = featured_article.select_one("p.ArticleList_summary__G96cV")
-                    description = desc_elem.text.strip() if desc_elem else title
-
-                    # Check if we have a cached date for this article
-                    if link in article_cache:
-                        date = article_cache[link]["date"]
-                        logger.info(f"Using cached date for featured article: {title}")
-                    else:
-                        # Look for date in the featured article
-                        date_elem = featured_article.select_one("div.ArticleList_date__2VTRg")
-                        if date_elem:
-                            try:
-                                date_text = date_elem.text.strip()
-                                date = datetime.strptime(date_text, "%b %d, %Y")
-                                date = date.replace(hour=0, minute=0, second=0, tzinfo=pytz.UTC)
-                            except ValueError:
-                                logger.warning(f"Could not parse date '{date_text}' for featured article: {title}")
-                                # Use current time as the "first seen" date
-                                date = current_time
-                        else:
-                            # Use current time as the "first seen" date
-                            logger.info(
-                                f"No date found for featured article: {title}, using current time as first seen date"
-                            )
-                            date = current_time
-
-                        # Cache this article
-                        article_cache[link] = {"title": title, "date": date}
-                        cache_updated = True
-
-                    articles.append(
-                        {
-                            "title": title,
-                            "link": link,
-                            "description": description,
-                            "date": date,
-                            "category": "Engineering",
-                        }
-                    )
-                    logger.info(f"Found featured article: {title}")
-
-        # Find all other article cards
-        article_cards = soup.select("article.ArticleList_article__LIMds:not(.ArticleList_featured__2WCTd)")
-
-        for card in article_cards:
+        for element in article_elements + all_eng_links:
             try:
-                # Extract title
-                title_elem = card.select_one("h3")
-                if not title_elem:
-                    continue
-                title = title_elem.text.strip()
-
                 # Extract link
-                link_elem = card.select_one("a.ArticleList_cardLink__VWIzl")
-                if not link_elem or not link_elem.get("href"):
+                link = extract_link(element)
+                if not link or link in seen_links:
                     continue
-                link = "https://www.anthropic.com" + link_elem["href"]
 
-                # Check if we have a cached date for this article
-                if link in article_cache:
-                    date = article_cache[link]["date"]
-                    logger.info(f"Using cached date for article: {title}")
-                else:
-                    # Extract date
-                    date_elem = card.select_one("div.ArticleList_date__2VTRg")
-                    if date_elem:
-                        try:
-                            date_text = date_elem.text.strip()
-                            # Parse date format like "Apr 18, 2025"
-                            date = datetime.strptime(date_text, "%b %d, %Y")
-                            date = date.replace(hour=0, minute=0, second=0, tzinfo=pytz.UTC)
-                        except ValueError:
-                            logger.warning(f"Could not parse date '{date_text}' for article: {title}")
-                            # Use current time as the "first seen" date
-                            date = current_time
-                    else:
-                        # Use current time as the "first seen" date
-                        logger.info(f"No date found for article: {title}, using current time as first seen date")
-                        date = current_time
+                # Skip the main engineering page
+                if link.endswith("/engineering") or link.endswith("/engineering/"):
+                    continue
 
-                    # Cache this article
+                seen_links.add(link)
+
+                # Extract title
+                title = extract_title(element)
+                if not title:
+                    logger.debug(f"Could not extract title for link: {link}")
+                    continue
+
+                # Extract date (with caching)
+                date, needs_cache = extract_date(element, article_cache, link)
+
+                # Update cache if needed
+                if needs_cache:
                     article_cache[link] = {"title": title, "date": date}
                     cache_updated = True
 
-                # Use title as description since there's no separate description for non-featured articles
+                # Extract description
+                desc_selectors = ["p.ArticleList_summary__G96cV", "p[class*='summary']", "p[class*='description']"]
                 description = title
+                for sel in desc_selectors:
+                    desc_elem = element.select_one(sel)
+                    if desc_elem and desc_elem.text.strip():
+                        description = desc_elem.text.strip()
+                        break
 
-                articles.append(
-                    {"title": title, "link": link, "description": description, "date": date, "category": "Engineering"}
-                )
-                logger.info(f"Found article: {title}")
+                article = {
+                    "title": title,
+                    "link": link,
+                    "description": description,
+                    "date": date,
+                    "category": "Engineering",
+                }
+
+                if validate_article(article):
+                    articles.append(article)
+                    logger.info(f"Found article: {title}")
 
             except Exception as e:
-                logger.warning(f"Error parsing article card: {str(e)}")
+                logger.warning(f"Error parsing element: {str(e)}")
                 continue
 
         # Save the updated cache if needed
