@@ -77,6 +77,22 @@ GitHub Actions will run your script automatically once it's committed
 
 ### Project Tools
 
+1. Add `cmd_rss_feed_generator.md` to [Claude Code](https://claude.ai/code)'s [slash commands](https://docs.claude.com/en/docs/claude-code/slash-commands):
+
+   ```bash
+   cp cmd_rss_feed_generator.md ~/.claude/commands/
+   ```
+
+2. Download the HTLML of the blog you want to create a feed for.
+3. Open Claude Code CLI
+4. Invoke the `rss_feed_generator` command pointing to the html file.
+
+![Generate RSS Feed](./claude_code_rss_feed_generator.png)
+
+<details>
+
+<summary>Deprecated</summary>
+
 - **GitHub Copilot Workspace:** Used for some PRs ([label: copilot](https://github.com/Olshansk/rss-feeds/pulls?q=label%3Acopilot+)).
 - **Claude Projects:**
 
@@ -88,6 +104,8 @@ GitHub Actions will run your script automatically once it's committed
     - If you can't parse the HTML, ask for a sample or explain the issue
 
 - **Claude Sync:** [ClaudeSync repo](https://github.com/jahwag/ClaudeSync?tab=readme-ov-files) keeps project files in sync.
+
+</details>
 
 ## Star History
 
