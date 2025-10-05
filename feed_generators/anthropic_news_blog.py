@@ -43,11 +43,12 @@ def parse_news_html(html_content):
     try:
         soup = BeautifulSoup(html_content, "html.parser")
         articles = []
+        seen_links = set()
 
-        # Find all article cards
-        news_cards = soup.select("a.PostCard_post-card__z_Sqq")
+        # Find all PostCard article cards
+        post_cards = soup.select("a.PostCard_post-card__z_Sqq")
 
-        for card in news_cards:
+        for card in post_cards:
             # Extract title
             title_elem = card.select_one("h3.PostCard_post-heading__Ob1pu")
             if not title_elem:
@@ -56,6 +57,11 @@ def parse_news_html(html_content):
 
             # Extract link
             link = "https://www.anthropic.com" + card["href"] if card["href"].startswith("/") else card["href"]
+
+            # Skip duplicates
+            if link in seen_links:
+                continue
+            seen_links.add(link)
 
             # Extract date
             date_elem = card.select_one("div.PostList_post-date__djrOA")
@@ -75,6 +81,54 @@ def parse_news_html(html_content):
 
             # Extract description (if present in the HTML)
             # Note: Description might not be directly available, using title as fallback
+            description = title
+
+            articles.append(
+                {"title": title, "link": link, "date": date, "category": category, "description": description}
+            )
+
+        # Also find Card_linkRoot cards (different layout style)
+        card_links = soup.select("a.Card_linkRoot__alQfM")
+
+        for card in card_links:
+            # Extract title
+            title_elem = card.select_one("h3.Card_headline__reaoT")
+            if not title_elem:
+                continue
+            title = title_elem.text.strip()
+
+            # Extract link
+            href = card.get("href", "")
+            link = "https://www.anthropic.com" + href if href.startswith("/") else href
+
+            # Skip duplicates
+            if link in seen_links:
+                continue
+            seen_links.add(link)
+
+            # Extract date from Card layout
+            date_elem = card.select_one("p.detail-m.agate")
+            if date_elem:
+                try:
+                    date_text = date_elem.text.strip()
+                    date = datetime.strptime(date_text, "%b %d, %Y")
+                    date = date.replace(tzinfo=pytz.UTC)
+                except ValueError:
+                    try:
+                        # Try alternative format without comma
+                        date = datetime.strptime(date_text, "%b %d %Y")
+                        date = date.replace(tzinfo=pytz.UTC)
+                    except ValueError:
+                        logger.warning(f"Could not parse date '{date_text}' for article: {title}")
+                        date = datetime.now(pytz.UTC)
+            else:
+                date = datetime.now(pytz.UTC)
+
+            # Extract category
+            category_elem = card.select_one("p.detail-m")
+            category = category_elem.text.strip() if category_elem and category_elem != date_elem else "News"
+
+            # Extract description (if present in the HTML)
             description = title
 
             articles.append(
