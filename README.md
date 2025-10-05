@@ -36,6 +36,8 @@ You know that blog you like that doesn't have an RSS feed and might never will?
   - [Project Tools](#project-tools)
 - [Star History](#star-history)
 - [How It Works](#how-it-works)
+- [Ideas](#ideas)
+  - [X RSS Feed](#x-rss-feed)
 
 ## Quick Start
 
@@ -145,3 +147,9 @@ flowchart TB
     style xml fill:#d1ecf1,stroke:#17a2b8,color:#000000
     style websites fill:#e2e3e5,stroke:#383d41,color:#000000
 ```
+
+## Ideas
+
+### X RSS Feed
+
+Going to `x.com/{USER}/index.xml` should give an RSS feed of the user's tweets.
