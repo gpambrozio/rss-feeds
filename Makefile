@@ -91,6 +91,10 @@ generate_ollama_feed: check-env  ## Generate RSS feed for ollama/blog
 generate_paulgraham_feed: check-env  ## Generate RSS feed for paulgraham/articles
 	python feed_generators/paulgraham_blog.py
 
+.PHONY: generate_blogsurgeai_feed
+generate_blogsurgeai_feed: check-env  ## Generate RSS feed for Surge AI blog
+	python feed_generators/blogsurgeai_feed_generator.py
+
 #######################
 ### Manual Testing  ###
 ######################
