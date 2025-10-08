@@ -8,209 +8,216 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 08 Oct 2025 20:04:16 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 08 Oct 2025 21:03:36 +0000</lastBuildDate>
     <item>
       <title>The AI Bottleneck: High-Quality, Human-Powered Data</title>
       <link>https://www.surgehq.ai/blog/the-ai-bottleneck-high-quality-human-powered-data</link>
       <description>The AI Bottleneck: High-Quality, Human-Powered Data</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/the-ai-bottleneck-high-quality-human-powered-data</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>5 Examples of the Importance of Context-Sensitivity in Data-Centric AI</title>
       <link>https://www.surgehq.ai/blog/why-context-aware-datasets-are-crucial-for-data-centric-ai</link>
       <description>5 Examples of the Importance of Context-Sensitivity in Data-Centric AI</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/why-context-aware-datasets-are-crucial-for-data-centric-ai</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>Is Google Search Deteriorating? Measuring Google's Search Quality in 2022</title>
       <link>https://www.surgehq.ai/blog/is-google-search-deteriorating-measuring-search-quality-in-2022</link>
       <description>Is Google Search Deteriorating? Measuring Google's Search Quality in 2022</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/is-google-search-deteriorating-measuring-search-quality-in-2022</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>Google Search is Falling Behind</title>
       <link>https://www.surgehq.ai/blog/google-search-is-falling-behind</link>
       <description>Google Search is Falling Behind</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/google-search-is-falling-behind</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>The average number of ads on a Google Search recipe? 8.7</title>
       <link>https://www.surgehq.ai/blog/the-average-number-of-ads-on-a-google-search-recipe-8-7</link>
       <description>The average number of ads on a Google Search recipe? 8.7</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/the-average-number-of-ads-on-a-google-search-recipe-8-7</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>We asked 100 humans to draw the DALL·E prompts</title>
       <link>https://www.surgehq.ai/blog/humans-vs-dall-e</link>
       <description>We asked 100 humans to draw the DALL·E prompts</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/humans-vs-dall-e</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>How Surge AI Built OpenAI's GSM8K Dataset of 8,500 Math Problems</title>
       <link>https://www.surgehq.ai/blog/how-we-built-it-openais-gsm8k-dataset-of-8500-math-problems</link>
       <description>How Surge AI Built OpenAI's GSM8K Dataset of 8,500 Math Problems</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/how-we-built-it-openais-gsm8k-dataset-of-8500-math-problems</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>Humans vs. Gary Marcus vs. Slate Star Codex: When is an AI failure actually a failure?</title>
       <link>https://www.surgehq.ai/blog/humans-vs-gary-marcus</link>
       <description>Humans vs. Gary Marcus vs. Slate Star Codex: When is an AI failure actually a failure?</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/humans-vs-gary-marcus</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>AI Red Teams and Adversarial Data Labeling with Redwood Research</title>
       <link>https://www.surgehq.ai/blog/ai-red-teams-and-adversarial-data-labeling-with-redwood-research</link>
       <description>AI Red Teams and Adversarial Data Labeling with Redwood Research</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/ai-red-teams-and-adversarial-data-labeling-with-redwood-research</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>Search Behind-the-Scenes: How Neeva Uses Human Evaluation to Measure Search Quality</title>
       <link>https://www.surgehq.ai/blog/beyond-clicks-how-neeva-uses-human-evaluation-of-search-quality-to-take-on-google</link>
       <description>Search Behind-the-Scenes: How Neeva Uses Human Evaluation to Measure Search Quality</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/beyond-clicks-how-neeva-uses-human-evaluation-of-search-quality-to-take-on-google</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>30% of Google's Emotions Dataset is Mislabeled</title>
       <link>https://www.surgehq.ai/blog/30-percent-of-googles-reddit-emotions-dataset-is-mislabeled</link>
       <description>30% of Google's Emotions Dataset is Mislabeled</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/30-percent-of-googles-reddit-emotions-dataset-is-mislabeled</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>Human Evaluation of Large Language Models: How Good is Hugging Face’s BLOOM?</title>
       <link>https://www.surgehq.ai/blog/how-good-is-hugging-faces-bloom-a-real-world-human-evaluation-of-language-models</link>
       <description>Human Evaluation of Large Language Models: How Good is Hugging Face’s BLOOM?</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/how-good-is-hugging-faces-bloom-a-real-world-human-evaluation-of-language-models</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>The $250K Inverse Scaling Prize and Human-AI Alignment</title>
       <link>https://www.surgehq.ai/blog/the-250k-inverse-scaling-prize-and-human-ai-alignment</link>
       <description>The $250K Inverse Scaling Prize and Human-AI Alignment</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/the-250k-inverse-scaling-prize-and-human-ai-alignment</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>Why Instagram is Losing Gen Z: We Asked 100 Users to Compare TikTok vs. Reels</title>
       <link>https://www.surgehq.ai/blog/tiktok-vs-instagram-reels-personalized-human-evaluation</link>
       <description>Why Instagram is Losing Gen Z: We Asked 100 Users to Compare TikTok vs. Reels</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/tiktok-vs-instagram-reels-personalized-human-evaluation</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>Evaluating Generative AI: Did Astral Codex Ten Win His Bet on AI Progress?</title>
       <link>https://www.surgehq.ai/blog/dall-e-vs-imagen-and-evaluating-astral-codex-tens-3000-ai-bet</link>
       <description>Evaluating Generative AI: Did Astral Codex Ten Win His Bet on AI Progress?</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/dall-e-vs-imagen-and-evaluating-astral-codex-tens-3000-ai-bet</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>How TikTok is Evolving the Next Generation of Search</title>
       <link>https://www.surgehq.ai/blog/how-tiktok-is-evolving-the-next-generation-of-search</link>
       <description>How TikTok is Evolving the Next Generation of Search</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/how-tiktok-is-evolving-the-next-generation-of-search</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>HellaSwag or HellaBad? 36% of this popular LLM benchmark contains errors</title>
       <link>https://www.surgehq.ai/blog/hellaswag-or-hellabad-36-of-this-popular-llm-benchmark-contains-errors</link>
       <description>HellaSwag or HellaBad? 36% of this popular LLM benchmark contains errors</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/hellaswag-or-hellabad-36-of-this-popular-llm-benchmark-contains-errors</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>DALL·E 3 and Midjourney Fail Astral Codex Ten's Image Generation Bet</title>
       <link>https://www.surgehq.ai/blog/dalle-3-and-midjourney-fail-astral-codex-tens-image-generation-bet</link>
       <description>DALL·E 3 and Midjourney Fail Astral Codex Ten's Image Generation Bet</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/dalle-3-and-midjourney-fail-astral-codex-tens-image-generation-bet</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>Moving Beyond Engagement: Optimizing Facebook's Algorithms for Human Values</title>
       <link>https://www.surgehq.ai/blog/what-if-social-media-optimized-for-human-values</link>
       <description>Moving Beyond Engagement: Optimizing Facebook's Algorithms for Human Values</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/what-if-social-media-optimized-for-human-values</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>AI Red Teams for Adversarial Training: How to Make ChatGPT and LLMs Adversarially Robust</title>
       <link>https://www.surgehq.ai/blog/ai-red-teams-for-adversarial-training-making-chatgpt-and-large-language-models-adversarially-robust</link>
       <description>AI Red Teams for Adversarial Training: How to Make ChatGPT and LLMs Adversarially Robust</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/ai-red-teams-for-adversarial-training-making-chatgpt-and-large-language-models-adversarially-robust</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>Holy $#!t: Are popular toxicity models simply profanity detectors?</title>
       <link>https://www.surgehq.ai/blog/are-popular-toxicity-models-simply-profanity-detectors</link>
       <description>Holy $#!t: Are popular toxicity models simply profanity detectors?</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/are-popular-toxicity-models-simply-profanity-detectors</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>We Evaluated ChatGPT vs. Google on 500 Search Queries</title>
       <link>https://www.surgehq.ai/blog/googles-existential-threat-chatgpt-matches-googles-performance-on-informational-search-queries-and-smashes-it-on-coding</link>
       <description>We Evaluated ChatGPT vs. Google on 500 Search Queries</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/googles-existential-threat-chatgpt-matches-googles-performance-on-informational-search-queries-and-smashes-it-on-coding</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>How Anthropic uses Surge AI to Train and Evaluate Claude</title>
       <link>https://www.surgehq.ai/blog/anthropic-surge-ai-rlhf-platform-train-llm-assistant-human-feedback</link>
       <description>How Anthropic uses Surge AI to Train and Evaluate Claude</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/anthropic-surge-ai-rlhf-platform-train-llm-assistant-human-feedback</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>Bringing light to the GPT-4o vs. GPT-5 personality controversy</title>
       <link>https://www.surgehq.ai/blog/bringing-light-to-the-gpt-4o-vs-gpt-5-personality-controversy</link>
       <description>Bringing light to the GPT-4o vs. GPT-5 personality controversy</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/bringing-light-to-the-gpt-4o-vs-gpt-5-personality-controversy</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>Unsexy AI Failures: The PDF That Broke ChatGPT</title>
       <link>https://www.surgehq.ai/blog/the-pdf-that-broke-chatgpt</link>
       <description>Unsexy AI Failures: The PDF That Broke ChatGPT</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/the-pdf-that-broke-chatgpt</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>Benchmarks are broken</title>
       <link>https://www.surgehq.ai/blog/benchmarks-are-broken</link>
       <description>Benchmarks are broken</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/benchmarks-are-broken</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>SWE-Bench Failures: When Coding Agents Spiral Into 693 Lines of Hallucinations</title>
       <link>https://www.surgehq.ai/blog/when-coding-agents-spiral-into-693-lines-of-hallucinations</link>
       <description>SWE-Bench Failures: When Coding Agents Spiral Into 693 Lines of Hallucinations</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/when-coding-agents-spiral-into-693-lines-of-hallucinations</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>Unsexy AI Failures: Still Confidently Hallucinating Image Text</title>
       <link>https://www.surgehq.ai/blog/unsexy-ai-failures-still-confidently-hallucinating-image-text</link>
       <description>Unsexy AI Failures: Still Confidently Hallucinating Image Text</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/unsexy-ai-failures-still-confidently-hallucinating-image-text</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
     <item>
       <title>The Human/AI Frontier: A Conversation with Bogdan Grechuk</title>
       <link>https://www.surgehq.ai/blog/the-human-frontier-bogdan-grechuk</link>
       <description>The Human/AI Frontier: A Conversation with Bogdan Grechuk</description>
       <guid isPermaLink="false">https://www.surgehq.ai/blog/the-human-frontier-bogdan-grechuk</guid>
-      <pubDate>Wed, 08 Oct 2025 20:04:16 +0000</pubDate>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
+    </item>
+    <item>
+      <title>Is Sonnet 4.5 the best coding model in the world?</title>
+      <link>https://www.surgehq.ai/blog/sonnet-4-5-coding-model-evaluation</link>
+      <description>Is Sonnet 4.5 the best coding model in the world?</description>
+      <guid isPermaLink="false">https://www.surgehq.ai/blog/sonnet-4-5-coding-model-evaluation</guid>
+      <pubDate>Wed, 08 Oct 2025 21:03:36 +0000</pubDate>
     </item>
   </channel>
 </rss>
