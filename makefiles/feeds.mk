@@ -65,6 +65,13 @@ feeds_blogsurgeai: ## Generate RSS feed for Surge AI Blog
 	$(Q)python feed_generators/blogsurgeai_feed_generator.py
 	$(call print_success,Surge AI Blog feed generated)
 
+.PHONY: feeds_xainews
+feeds_xainews: ## Generate RSS feed for xAI News
+	$(call check_venv)
+	$(call print_info,Generating xAI News feed)
+	$(Q)python feed_generators/xainews_blog.py
+	$(call print_success,xAI News feed generated)
+
 .PHONY: clean_feeds
 clean_feeds: ## Clean generated RSS feed files
 	$(call print_warning,Removing generated RSS feeds)

@@ -117,6 +117,9 @@ generate_paulgraham_feed: feeds_paulgraham ## (Legacy) Generate Paul Graham feed
 .PHONY: generate_blogsurgeai_feed
 generate_blogsurgeai_feed: feeds_blogsurgeai ## (Legacy) Generate Surge AI Blog feed
 
+.PHONY: generate_xainews_feed
+generate_xainews_feed: feeds_xainews ## (Legacy) Generate xAI News feed
+
 .PHONY: test_feed_workflow
 test_feed_workflow: ci_test_workflow_local ## (Legacy) Test feed workflow locally
 
