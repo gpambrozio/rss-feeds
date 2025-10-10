@@ -40,23 +40,32 @@ def generate_blogsurgeai_feed():
     soup = BeautifulSoup(response.content, 'html.parser')
 
     # Find all blog post items
-    blog_items = soup.find_all('div', class_='research-v2-item')
+    blog_items = soup.find_all('div', class_='blog-hero-cms-item')
 
     print(f"Found {len(blog_items)} blog posts")
 
     # Process each blog post
     for item in blog_items:
         try:
-            # Find the link and title
-            link_element = item.find('a', class_='research-v2-item-txt')
+            # Find the title
+            title_element = item.find('div', class_='blog-hero-cms-item-title')
+            if not title_element:
+                continue
+
+            title = title_element.get_text(strip=True)
+
+            # Find the link
+            link_element = item.find('a', class_='blog-hero-cms-item-link')
             if not link_element:
                 continue
 
-            title = link_element.get_text(strip=True)
             link = link_element.get('href')
-
             if not link.startswith('http'):
                 link = 'https://www.surgehq.ai' + link
+
+            # Find the description
+            desc_element = item.find('div', class_='blog-hero-cms-item-desc')
+            description = desc_element.get_text(strip=True) if desc_element else title
 
             # Create feed entry
             fe = fg.add_entry()
@@ -68,8 +77,8 @@ def generate_blogsurgeai_feed():
             # In a real implementation, we could fetch each article to get the actual date
             fe.published(datetime.now(pytz.UTC))
 
-            # Set description to the title (could be enhanced by fetching full article)
-            fe.description(title)
+            # Set description
+            fe.description(description)
 
             print(f"Added: {title}")
 
