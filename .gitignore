@@ -176,3 +176,6 @@ cython_debug/
 
 # Visual Studio
 .vscode
+
+# HTML
+*.html
