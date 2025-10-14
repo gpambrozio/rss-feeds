@@ -13,7 +13,7 @@
       <link>https://ollama.com/blog/feed_ollama.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Tue, 14 Oct 2025 00:09:43 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 14 Oct 2025 01:30:29 +0000</lastBuildDate>
     <item>
       <title>Run Llama 2 uncensored locally</title>
       <link>https://ollama.com/blog/run-llama2-uncensored-locally</link>
@@ -251,6 +251,13 @@
       <description>A new web search API is now available in Ollama. Ollama provides a generous free tier of web searches for individuals to use, and higher rate limits are available via Ollama’s cloud.</description>
       <guid isPermaLink="false">https://ollama.com/blog/web-search</guid>
       <pubDate>Wed, 24 Sep 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>NVIDIA DGX Spark</title>
+      <link>https://ollama.com/blog/nvidia-spark</link>
+      <description>The latest NVIDIA DGX Spark is here! Ollama has partnered with NVIDIA to ensure it runs fast and efficiently out-of-the-box.</description>
+      <guid isPermaLink="false">https://ollama.com/blog/nvidia-spark</guid>
+      <pubDate>Mon, 13 Oct 2025 00:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>
