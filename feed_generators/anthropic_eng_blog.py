@@ -5,8 +5,6 @@ import pytz
 from feedgen.feed import FeedGenerator
 import logging
 from pathlib import Path
-import json
-import os
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -25,43 +23,6 @@ def ensure_feeds_directory():
     return feeds_dir
 
 
-def get_article_cache_file():
-    """Get the path to the article cache file."""
-    feeds_dir = ensure_feeds_directory()
-    return feeds_dir / "anthropic_engineering_article_cache.json"
-
-
-def load_article_cache():
-    """Load the article cache from disk."""
-    cache_file = get_article_cache_file()
-    if cache_file.exists():
-        try:
-            with open(cache_file, "r") as f:
-                cache = json.load(f)
-                # Convert date strings back to datetime objects
-                for link, data in cache.items():
-                    data["date"] = datetime.fromisoformat(data["date"])
-                return cache
-        except Exception as e:
-            logger.warning(f"Failed to load article cache: {e}")
-    return {}
-
-
-def save_article_cache(cache):
-    """Save the article cache to disk."""
-    cache_file = get_article_cache_file()
-    try:
-        # Convert datetime objects to strings for JSON serialization
-        cache_to_save = {}
-        for link, data in cache.items():
-            cache_to_save[link] = {"title": data["title"], "date": data["date"].isoformat()}
-
-        with open(cache_file, "w") as f:
-            json.dump(cache_to_save, f, indent=2)
-    except Exception as e:
-        logger.warning(f"Failed to save article cache: {e}")
-
-
 def fetch_engineering_content(url="https://www.anthropic.com/engineering"):
     """Fetch engineering page content from Anthropic's website."""
     try:
@@ -76,72 +37,6 @@ def fetch_engineering_content(url="https://www.anthropic.com/engineering"):
         raise
 
 
-def extract_title(card):
-    """Extract title using multiple fallback selectors."""
-    selectors = ["h2", "h3", "h1", "h4[class*='headline']", "h3[class*='title']", "h2[class*='title']"]
-    for selector in selectors:
-        elem = card.select_one(selector)
-        if elem and elem.text.strip():
-            return elem.text.strip()
-    return None
-
-
-def extract_date(card, article_cache, link):
-    """Extract date using multiple fallback selectors and cache."""
-    # Check cache first
-    if link in article_cache:
-        return article_cache[link]["date"], False
-
-    selectors = [
-        "div.ArticleList_date__2VTRg",
-        "div[class*='date']",
-        "p[class*='date']",
-        "time",
-        ".detail-m.agate",
-    ]
-
-    date_formats = [
-        "%b %d, %Y",
-        "%B %d, %Y",
-        "%b %d %Y",
-        "%B %d %Y",
-        "%Y-%m-%d",
-        "%m/%d/%Y",
-    ]
-
-    for selector in selectors:
-        elem = card.select_one(selector)
-        if elem:
-            date_text = elem.text.strip()
-            for date_format in date_formats:
-                try:
-                    date = datetime.strptime(date_text, date_format)
-                    return date.replace(hour=0, minute=0, second=0, tzinfo=pytz.UTC), True
-                except ValueError:
-                    continue
-
-    # Use current time as "first seen" date if not found
-    return datetime.now(pytz.UTC), True
-
-
-def extract_link(card):
-    """Extract link using multiple fallback selectors."""
-    selectors = [
-        "a.ArticleList_cardLink__VWIzl",
-        "a[href*='/engineering/']",
-        "a[class*='cardLink']",
-        "a[class*='link']",
-    ]
-
-    for selector in selectors:
-        elem = card.select_one(selector)
-        if elem and elem.get("href"):
-            href = elem["href"]
-            return "https://www.anthropic.com" + href if href.startswith("/") else href
-
-    return None
-
-
 def validate_article(article):
     """Validate article has required fields."""
     if not article.get("title") or len(article["title"]) < 5:
@@ -154,81 +49,82 @@ def validate_article(article):
 
 
 def parse_engineering_html(html_content):
-    """Parse the engineering HTML content and extract article information."""
+    """Parse the engineering HTML content and extract article information from embedded JSON."""
     try:
         soup = BeautifulSoup(html_content, "html.parser")
         articles = []
-        seen_links = set()
 
-        # Load existing article cache
-        article_cache = load_article_cache()
-        cache_updated = False
+        # Find the Next.js script tag containing article data
+        script_tag = None
+        for script in soup.find_all("script"):
+            if script.string and "publishedOn" in script.string and "engineeringArticle" in script.string:
+                script_tag = script
+                break
 
-        # Find all engineering article links using flexible selector
-        all_eng_links = soup.select('a[href*="/engineering/"]')
-        logger.info(f"Found {len(all_eng_links)} potential engineering article links")
+        if not script_tag:
+            logger.error("Could not find Next.js data script containing article information")
+            return []
 
-        # Also look for article elements
-        article_elements = soup.select("article")
+        script_content = script_tag.string
 
-        for element in article_elements + all_eng_links:
+        # Extract article data from the escaped JSON in the Next.js script
+        # Pattern matches: publishedOn, slug, title, and summary fields
+        import re
+
+        pattern = r'\\"publishedOn\\":\\"([^"]+?)\\",\\"slug\\":\{[^}]*?\\"current\\":\\"([^"]+?)\\"'
+        matches = re.findall(pattern, script_content)
+
+        logger.info(f"Found {len(matches)} articles from JSON data")
+
+        for published_date, slug in matches:
             try:
-                # Extract link
-                link = extract_link(element)
-                if not link or link in seen_links:
+                # Construct the full URL from the slug
+                link = f"https://www.anthropic.com/engineering/{slug}"
+
+                # Find the article object containing this slug to get title and summary
+                # Search for the section containing this slug
+                slug_pos = script_content.find(f'\\"current\\":\\"{slug}\\"')
+                if slug_pos == -1:
                     continue
 
-                # Skip the main engineering page
-                if link.endswith("/engineering") or link.endswith("/engineering/"):
-                    continue
+                # Search forward from slug position to find the title and summary
+                # The structure is: ...publishedOn, slug, ...other fields..., summary, title}
+                search_section = script_content[slug_pos:slug_pos + 2000]
 
-                seen_links.add(link)
+                # Extract title and summary (they appear AFTER the slug in the data)
+                # Use negative lookbehind to handle escaped quotes correctly
+                title_match = re.search(r'\\"title\\":\\"(.*?)(?<!\\)\\"', search_section)
+                title = title_match.group(1) if title_match else slug.replace("-", " ").title()
+                # Unescape the title using re.sub to handle all escaped characters
+                title = re.sub(r'\\(.)', r'\1', title) if title else title
 
-                # Extract title
-                title = extract_title(element)
-                if not title:
-                    logger.debug(f"Could not extract title for link: {link}")
-                    continue
+                # Extract summary/description
+                summary_match = re.search(r'\\"summary\\":\\"(.*?)(?<!\\)\\"', search_section)
+                description = summary_match.group(1) if summary_match else title
+                # Unescape the description
+                description = re.sub(r'\\(.)', r'\1', description) if description else description
 
-                # Extract date (with caching)
-                date, needs_cache = extract_date(element, article_cache, link)
-
-                # Update cache if needed
-                if needs_cache:
-                    article_cache[link] = {"title": title, "date": date}
-                    cache_updated = True
-
-                # Extract description
-                desc_selectors = ["p.ArticleList_summary__G96cV", "p[class*='summary']", "p[class*='description']"]
-                description = title
-                for sel in desc_selectors:
-                    desc_elem = element.select_one(sel)
-                    if desc_elem and desc_elem.text.strip():
-                        description = desc_elem.text.strip()
-                        break
+                # Parse the date
+                date = datetime.strptime(published_date, "%Y-%m-%d")
+                date = date.replace(hour=0, minute=0, second=0, tzinfo=pytz.UTC)
 
                 article = {
                     "title": title,
                     "link": link,
-                    "description": description,
+                    "description": description if description else title,
                     "date": date,
                     "category": "Engineering",
                 }
 
                 if validate_article(article):
                     articles.append(article)
-                    logger.info(f"Found article: {title}")
+                    logger.info(f"Found article: {title} ({published_date})")
 
             except Exception as e:
-                logger.warning(f"Error parsing element: {str(e)}")
+                logger.warning(f"Error parsing article {slug}: {str(e)}")
                 continue
 
-        # Save the updated cache if needed
-        if cache_updated:
-            save_article_cache(article_cache)
-            logger.info("Updated article cache with new articles")
-
-        logger.info(f"Successfully parsed {len(articles)} articles")
+        logger.info(f"Successfully parsed {len(articles)} articles from JSON data")
         return articles
 
     except Exception as e:
