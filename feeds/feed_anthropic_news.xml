@@ -13,7 +13,7 @@
       <link>https://anthropic.com/news/feed_anthropic_news.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Fri, 10 Oct 2025 22:05:21 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 22 Oct 2025 01:31:21 +0000</lastBuildDate>
     <item>
       <title>Anthropic raises $124 million to build more reliable, general AI systems</title>
       <link>https://www.anthropic.com/news/anthropic-raises-124-million-to-build-more-reliable-general-ai-systems</link>
@@ -1415,12 +1415,68 @@
       <pubDate>Thu, 09 Oct 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
+      <title>Anthropic and Salesforce expand partnership to bring Claude to regulated industries</title>
+      <link>https://www.anthropic.com/news/salesforce-anthropic-expanded-partnership</link>
+      <description>Anthropic and Salesforce expand partnership to bring Claude to regulated industries</description>
+      <guid isPermaLink="false">https://www.anthropic.com/news/salesforce-anthropic-expanded-partnership</guid>
+      <category>Announcements</category>
+      <pubDate>Tue, 14 Oct 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Introducing Claude Haiku 4.5</title>
+      <link>https://www.anthropic.com/news/claude-haiku-4-5</link>
+      <description>Introducing Claude Haiku 4.5</description>
+      <guid isPermaLink="false">https://www.anthropic.com/news/claude-haiku-4-5</guid>
+      <category>Product</category>
+      <pubDate>Wed, 15 Oct 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Introducing Agent Skills</title>
+      <link>https://www.anthropic.com/news/skills</link>
+      <description>Introducing Agent Skills</description>
+      <guid isPermaLink="false">https://www.anthropic.com/news/skills</guid>
+      <category>Product</category>
+      <pubDate>Thu, 16 Oct 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Claude and your productivity platforms</title>
+      <link>https://www.anthropic.com/news/productivity-platforms</link>
+      <description>Claude and your productivity platforms</description>
+      <guid isPermaLink="false">https://www.anthropic.com/news/productivity-platforms</guid>
+      <category>Product</category>
+      <pubDate>Thu, 16 Oct 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Claude for Life Sciences</title>
+      <link>https://www.anthropic.com/news/claude-for-life-sciences</link>
+      <description>Claude for Life Sciences</description>
+      <guid isPermaLink="false">https://www.anthropic.com/news/claude-for-life-sciences</guid>
+      <category>Announcements</category>
+      <pubDate>Mon, 20 Oct 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Claude Code on the web</title>
+      <link>https://www.anthropic.com/news/claude-code-on-the-web</link>
+      <description>Claude Code on the web</description>
+      <guid isPermaLink="false">https://www.anthropic.com/news/claude-code-on-the-web</guid>
+      <category>Product</category>
+      <pubDate>Mon, 20 Oct 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>A statement from Dario Amodei on Anthropic's commitment to American AI leadership</title>
+      <link>https://www.anthropic.com/news/statement-dario-amodei-american-ai-leadership</link>
+      <description>A statement from Dario Amodei on Anthropic's commitment to American AI leadership</description>
+      <guid isPermaLink="false">https://www.anthropic.com/news/statement-dario-amodei-american-ai-leadership</guid>
+      <category>Announcements</category>
+      <pubDate>Tue, 21 Oct 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
       <title>Anthropic raises $13B Series F at $183B post-money valuation</title>
       <link>https://www.anthropic.com/news/anthropic-raises-series-f-at-usd183b-post-money-valuation</link>
       <description>Anthropic raises $13B Series F at $183B post-money valuation</description>
       <guid isPermaLink="false">https://www.anthropic.com/news/anthropic-raises-series-f-at-usd183b-post-money-valuation</guid>
       <category>Announcements</category>
-      <pubDate>Fri, 10 Oct 2025 22:05:21 +0000</pubDate>
+      <pubDate>Wed, 22 Oct 2025 01:31:21 +0000</pubDate>
     </item>
     <item>
       <title>Thoughts on America’s AI Action Plan</title>
@@ -1428,7 +1484,7 @@
       <description>Thoughts on America’s AI Action Plan</description>
       <guid isPermaLink="false">https://www.anthropic.com/news/thoughts-on-america-s-ai-action-plan</guid>
       <category>Policy</category>
-      <pubDate>Fri, 10 Oct 2025 22:05:21 +0000</pubDate>
+      <pubDate>Wed, 22 Oct 2025 01:31:21 +0000</pubDate>
     </item>
     <item>
       <title>Introducing Claude Sonnet 4.5</title>
@@ -1436,7 +1492,7 @@
       <description>Introducing Claude Sonnet 4.5</description>
       <guid isPermaLink="false">https://www.anthropic.com/news/claude-sonnet-4-5</guid>
       <category>Announcements</category>
-      <pubDate>Fri, 10 Oct 2025 22:05:21 +0000</pubDate>
+      <pubDate>Wed, 22 Oct 2025 01:31:21 +0000</pubDate>
     </item>
   </channel>
 </rss>

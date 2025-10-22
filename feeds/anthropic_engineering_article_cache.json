@@ -46,5 +46,13 @@
   "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents": {
     "title": "Effective context engineering for AI agents",
     "date": "2025-09-29T17:04:11.840696+00:00"
+  },
+  "https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills": {
+    "title": "Engineering at Anthropic: Inside the team building reliable AI systems",
+    "date": "2025-09-29T00:00:00+00:00"
+  },
+  "https://www.anthropic.com/engineering/claude-code-sandboxing": {
+    "title": "Engineering at Anthropic: Inside the team building reliable AI systems",
+    "date": "2025-10-16T00:00:00+00:00"
   }
 }
