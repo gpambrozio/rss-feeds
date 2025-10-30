@@ -13,7 +13,7 @@
       <link>https://anthropic.com/news/feed_anthropic_news.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Wed, 22 Oct 2025 02:10:21 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 30 Oct 2025 05:39:53 +0000</lastBuildDate>
     <item>
       <title>Anthropic raises $124 million to build more reliable, general AI systems</title>
       <link>https://www.anthropic.com/news/anthropic-raises-124-million-to-build-more-reliable-general-ai-systems</link>
@@ -1311,9 +1311,9 @@
       <pubDate>Tue, 09 Sep 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Bringing memory to teams at work</title>
+      <title>Bringing memory to Claude</title>
       <link>https://www.anthropic.com/news/memory</link>
-      <description>Bringing memory to teams at work</description>
+      <description>Bringing memory to Claude</description>
       <guid isPermaLink="false">https://www.anthropic.com/news/memory</guid>
       <category>Product</category>
       <pubDate>Thu, 11 Sep 2025 00:00:00 +0000</pubDate>
@@ -1471,12 +1471,44 @@
       <pubDate>Tue, 21 Oct 2025 00:00:00 +0000</pubDate>
     </item>
     <item>
+      <title>Expanding our use of Google Cloud TPUs and Services</title>
+      <link>https://www.anthropic.com/news/expanding-our-use-of-google-cloud-tpus-and-services</link>
+      <description>Expanding our use of Google Cloud TPUs and Services</description>
+      <guid isPermaLink="false">https://www.anthropic.com/news/expanding-our-use-of-google-cloud-tpus-and-services</guid>
+      <category>Announcements</category>
+      <pubDate>Thu, 23 Oct 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Seoul becomes Anthropic’s third office in Asia-Pacific as we continue our international growth</title>
+      <link>https://www.anthropic.com/news/seoul-becomes-third-anthropic-office-in-asia-pacific</link>
+      <description>Seoul becomes Anthropic’s third office in Asia-Pacific as we continue our international growth</description>
+      <guid isPermaLink="false">https://www.anthropic.com/news/seoul-becomes-third-anthropic-office-in-asia-pacific</guid>
+      <category>Announcements</category>
+      <pubDate>Thu, 23 Oct 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Advancing Claude for Financial Services</title>
+      <link>https://www.anthropic.com/news/advancing-claude-for-financial-services</link>
+      <description>Advancing Claude for Financial Services</description>
+      <guid isPermaLink="false">https://www.anthropic.com/news/advancing-claude-for-financial-services</guid>
+      <category>Announcements</category>
+      <pubDate>Mon, 27 Oct 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Anthropic officially opens Tokyo office, signs Memorandum of Cooperation with the Japan AI Safety Institute</title>
+      <link>https://www.anthropic.com/news/opening-our-tokyo-office</link>
+      <description>Anthropic officially opens Tokyo office, signs Memorandum of Cooperation with the Japan AI Safety Institute</description>
+      <guid isPermaLink="false">https://www.anthropic.com/news/opening-our-tokyo-office</guid>
+      <category>Announcements</category>
+      <pubDate>Wed, 29 Oct 2025 00:00:00 +0000</pubDate>
+    </item>
+    <item>
       <title>Anthropic raises $13B Series F at $183B post-money valuation</title>
       <link>https://www.anthropic.com/news/anthropic-raises-series-f-at-usd183b-post-money-valuation</link>
       <description>Anthropic raises $13B Series F at $183B post-money valuation</description>
       <guid isPermaLink="false">https://www.anthropic.com/news/anthropic-raises-series-f-at-usd183b-post-money-valuation</guid>
       <category>Announcements</category>
-      <pubDate>Wed, 22 Oct 2025 02:10:21 +0000</pubDate>
+      <pubDate>Thu, 30 Oct 2025 05:39:53 +0000</pubDate>
     </item>
     <item>
       <title>Thoughts on America’s AI Action Plan</title>
@@ -1484,7 +1516,7 @@
       <description>Thoughts on America’s AI Action Plan</description>
       <guid isPermaLink="false">https://www.anthropic.com/news/thoughts-on-america-s-ai-action-plan</guid>
       <category>Policy</category>
-      <pubDate>Wed, 22 Oct 2025 02:10:21 +0000</pubDate>
+      <pubDate>Thu, 30 Oct 2025 05:39:53 +0000</pubDate>
     </item>
     <item>
       <title>Introducing Claude Sonnet 4.5</title>
@@ -1492,7 +1524,7 @@
       <description>Introducing Claude Sonnet 4.5</description>
       <guid isPermaLink="false">https://www.anthropic.com/news/claude-sonnet-4-5</guid>
       <category>Announcements</category>
-      <pubDate>Wed, 22 Oct 2025 02:10:21 +0000</pubDate>
+      <pubDate>Thu, 30 Oct 2025 05:39:53 +0000</pubDate>
     </item>
   </channel>
 </rss>
