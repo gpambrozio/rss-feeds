@@ -76,6 +76,7 @@ def extract_date(card):
         "%m/%d/%Y",
     ]
 
+    # Try specific selectors first
     for selector in selectors:
         elem = card.select_one(selector)
         if elem:
@@ -86,6 +87,18 @@ def extract_date(card):
                     return date.replace(tzinfo=pytz.UTC)
                 except ValueError:
                     continue
+
+    # Fallback: For spotlight cards, look for p.detail-m that contains a date
+    # (these cards have both category and date as p.detail-m elements)
+    detail_m_elems = card.select("p.detail-m")
+    for elem in detail_m_elems:
+        date_text = elem.text.strip()
+        for date_format in date_formats:
+            try:
+                date = datetime.strptime(date_text, date_format)
+                return date.replace(tzinfo=pytz.UTC)
+            except ValueError:
+                continue
 
     return None
 
