@@ -13,7 +13,7 @@
       <link>https://anthropic.com/engineering/feed_anthropic_engineering.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Wed, 18 Mar 2026 16:22:22 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 19 Mar 2026 16:17:12 +0000</lastBuildDate>
     <item>
       <title>Introducing Contextual Retrieval</title>
       <link>https://www.anthropic.com/engineering/contextual-retrieval</link>
@@ -149,6 +149,14 @@
       <guid isPermaLink="false">https://www.anthropic.com/engineering/building-c-compiler</guid>
       <category>Engineering</category>
       <pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Eval awareness in Claude Opus 4.6’s BrowseComp performance</title>
+      <link>https://www.anthropic.com/engineering/eval-awareness-browsecomp</link>
+      <description>Evaluating Opus 4.6 on BrowseComp, we found cases where the model recognized the test, then found and decrypted answers to it—raising questions about eval integrity in web-enabled environments.</description>
+      <guid isPermaLink="false">https://www.anthropic.com/engineering/eval-awareness-browsecomp</guid>
+      <category>Engineering</category>
+      <pubDate>Fri, 06 Mar 2026 00:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>
