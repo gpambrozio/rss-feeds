@@ -13,7 +13,7 @@
       <link>https://anthropic.com/engineering/feed_anthropic_engineering.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Thu, 23 Apr 2026 16:31:22 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 24 Apr 2026 16:18:35 +0000</lastBuildDate>
     <item>
       <title>Introducing Contextual Retrieval</title>
       <link>https://www.anthropic.com/engineering/contextual-retrieval</link>
@@ -159,6 +159,14 @@
       <pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate>
     </item>
     <item>
+      <title>Quantifying infrastructure noise in agentic coding evals</title>
+      <link>https://www.anthropic.com/engineering/infrastructure-noise</link>
+      <description>Infrastructure configuration can swing agentic coding benchmarks by several percentage points—sometimes more than the leaderboard gap between top models.\n\n</description>
+      <guid isPermaLink="false">https://www.anthropic.com/engineering/infrastructure-noise</guid>
+      <category>Engineering</category>
+      <pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
       <title>Eval awareness in Claude Opus 4.6’s BrowseComp performance</title>
       <link>https://www.anthropic.com/engineering/eval-awareness-browsecomp</link>
       <description>Evaluating Opus 4.6 on BrowseComp, we found cases where the model recognized the test, then found and decrypted answers to it—raising questions about eval integrity in web-enabled environments.</description>
@@ -181,6 +189,22 @@
       <guid isPermaLink="false">https://www.anthropic.com/engineering/claude-code-auto-mode</guid>
       <category>Engineering</category>
       <pubDate>Wed, 25 Mar 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Scaling Managed Agents: Decoupling the brain from the hands</title>
+      <link>https://www.anthropic.com/engineering/managed-agents</link>
+      <description>Harnesses encode assumptions that go stale as models improve. Managed Agents—our hosted service for long-horizon agent work—is built around interfaces that stay stable as harnesses change.</description>
+      <guid isPermaLink="false">https://www.anthropic.com/engineering/managed-agents</guid>
+      <category>Engineering</category>
+      <pubDate>Wed, 08 Apr 2026 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>An update on recent Claude Code quality reports</title>
+      <link>https://www.anthropic.com/engineering/april-23-postmortem</link>
+      <description>We traced recent reports of Claude Code quality issues to three separate changes. Here's what happened and what we're changing.</description>
+      <guid isPermaLink="false">https://www.anthropic.com/engineering/april-23-postmortem</guid>
+      <category>Engineering</category>
+      <pubDate>Thu, 23 Apr 2026 00:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>
